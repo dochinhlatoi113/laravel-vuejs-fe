@@ -1,18 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="!token">
+    <router-link to="/register">Register</router-link> |
+    <router-link to="/login">Login</router-link> |
+    </div>
+    <div v-if="token">
+      <router-link to="/detail-user">Details User</router-link> |
+      <router-link to="/list-store">Store</router-link> 
+    </div>
+    <router-view></router-view>
+    
+  
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import LoginForm from './components/LoginForm.vue'
 
+// import RegisterForm from './components/RegisterForm.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // LoginForm,
+    // RegisterForm,
+   
+},
+
+data () {
+  // let userToken = localStorage.getItem('this is tokens')
+   let token = localStorage.getItem('this is tokens')
+
+  return {
+    token:token    
   }
+},
+
 }
 </script>
 
